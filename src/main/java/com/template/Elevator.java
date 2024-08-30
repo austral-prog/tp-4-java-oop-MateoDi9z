@@ -1,11 +1,40 @@
 package com.template;
 
 public class Elevator {
+    int piso_actual;
+    int passengers;
+    int max_passengers;
+    int piso_maximo;
 
+    Elevator(int piso_inicial, int piso_maximo, int max_passengers) {
+        this.piso_actual = piso_inicial;
+        this.passengers = 0;
+        this.max_passengers = max_passengers;
+        this.piso_maximo = piso_maximo;
+    }
 
+    void moveToFloor(int new_piso) {
+        if (new_piso > this.piso_maximo || new_piso < 0)
+            return;
 
-    // Implement this class by observing the tests in this repo. From those you will be able
-    // to pick what the constructors params are, what the methods are and what they should do.
+        this.piso_actual = new_piso;
+    }
 
+    int getCurrentFloor() {
+        return piso_actual;
+    }
 
+    void addPassenger() {
+        if (passengers < max_passengers)
+            passengers += 1;
+    }
+
+    void removePassenger() {
+        if (passengers > 0)
+            passengers -= 1;
+    }
+
+    int getPassengerCount() {
+        return passengers;
+    }
 }
